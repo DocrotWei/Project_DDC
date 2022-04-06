@@ -329,6 +329,4 @@ BEGIN
   O_data_mod_I15 <= S_data_mod_I15;
   O_data_mod_Q15 <= S_data_mod_Q15;
 
-
-  
 END Behavioral;

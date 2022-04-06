@@ -597,7 +597,7 @@ BEGIN
     CLK  => I_clk,
     A    => I_data_mod0,
     B    => S_cos_mod0,
-    CE   => '1',
+    CE   => I_rst_n,
     SCLR => '0',
     P    => S_data_mod_I0_24bit
   );
@@ -607,7 +607,7 @@ BEGIN
     CLK  => I_clk,
     A    => I_data_mod0,
     B    => S_sin_mod0,
-    CE   => '1',
+    CE   => I_rst_n,
     SCLR => '0',
     P    => S_data_mod_Q0_24bit
   );
