@@ -30,30 +30,30 @@ USE ieee.Std_logic_unSigned.ALL;
 --library UNISIM;
 --uSe UNISIM.VComponentS.all;
 
-ENTITY Sig_gen_dri IS
+ENTITY sig_gen_dri IS
   PORT (
     I_clk        : IN std_logic;
     I_rst_n      : IN std_logic;
-    O_data_ori0  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori1  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori2  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori3  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori4  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori5  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori6  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori7  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori8  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori9  : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori10 : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori11 : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori12 : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori13 : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori14 : OUT std_logic_vector(7 DOWNTO 0);
-    O_data_ori15 : OUT std_logic_vector(7 DOWNTO 0)
+    O_data_mod0  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod1  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod2  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod3  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod4  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod5  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod6  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod7  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod8  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod9  : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod10 : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod11 : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod12 : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod13 : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod14 : OUT std_logic_vector(7 DOWNTO 0);
+    O_data_mod15 : OUT std_logic_vector(7 DOWNTO 0)
   );
-END Sig_gen_dri;
+END sig_gen_dri;
 
-ARCHITECTURE Behavioral OF Sig_gen_dri IS
+ARCHITECTURE Behavioral OF sig_gen_dri IS
   COMPONENT blk_mem_gen_0
     PORT (
       clka  : IN std_logic;
@@ -67,22 +67,22 @@ ARCHITECTURE Behavioral OF Sig_gen_dri IS
 
   CONSTANT MEM_SIZE : integer := 300000;
 
-  SIGNAL S_data_ori0  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori1  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori2  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori3  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori4  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori5  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori6  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori7  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori8  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori9  : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori10 : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori11 : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori12 : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori13 : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori14 : std_logic_vector(7 DOWNTO 0);
-  SIGNAL S_data_ori15 : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod0  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod1  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod2  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod3  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod4  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod5  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod6  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod7  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod8  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod9  : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod10 : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod11 : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod12 : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod13 : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod14 : std_logic_vector(7 DOWNTO 0);
+  SIGNAL S_data_mod15 : std_logic_vector(7 DOWNTO 0);
   SIGNAL S_addr_mem   : std_logic_vector(18 DOWNTO 0):= (others => '0' );
   SIGNAL S_douta_mem  : std_logic_vector(127 DOWNTO 0);
   SIGNAL S_dina_mem   : std_logic_vector(7 DOWNTO 0);
@@ -92,39 +92,39 @@ BEGIN
   PROCESS (I_clk, I_rst_n)
   BEGIN
     IF I_rst_n = '0' THEN
-      S_data_ori0  <= (OTHERS => '0');
-      S_data_ori1  <= (OTHERS => '0');
-      S_data_ori2  <= (OTHERS => '0');
-      S_data_ori3  <= (OTHERS => '0');
-      S_data_ori4  <= (OTHERS => '0');
-      S_data_ori5  <= (OTHERS => '0');
-      S_data_ori6  <= (OTHERS => '0');
-      S_data_ori7  <= (OTHERS => '0');
-      S_data_ori8  <= (OTHERS => '0');
-      S_data_ori9  <= (OTHERS => '0');
-      S_data_ori10 <= (OTHERS => '0');
-      S_data_ori11 <= (OTHERS => '0');
-      S_data_ori12 <= (OTHERS => '0');
-      S_data_ori13 <= (OTHERS => '0');
-      S_data_ori14 <= (OTHERS => '0');
-      S_data_ori15 <= (OTHERS => '0');
+      S_data_mod0  <= (OTHERS => '0');
+      S_data_mod1  <= (OTHERS => '0');
+      S_data_mod2  <= (OTHERS => '0');
+      S_data_mod3  <= (OTHERS => '0');
+      S_data_mod4  <= (OTHERS => '0');
+      S_data_mod5  <= (OTHERS => '0');
+      S_data_mod6  <= (OTHERS => '0');
+      S_data_mod7  <= (OTHERS => '0');
+      S_data_mod8  <= (OTHERS => '0');
+      S_data_mod9  <= (OTHERS => '0');
+      S_data_mod10 <= (OTHERS => '0');
+      S_data_mod11 <= (OTHERS => '0');
+      S_data_mod12 <= (OTHERS => '0');
+      S_data_mod13 <= (OTHERS => '0');
+      S_data_mod14 <= (OTHERS => '0');
+      S_data_mod15 <= (OTHERS => '0');
     ELSIF rising_edge(I_clk) THEN
-      S_data_ori0  <= S_douta_mem(7 DOWNTO 0);
-      S_data_ori1  <= S_douta_mem(15 DOWNTO 8);
-      S_data_ori2  <= S_douta_mem(23 DOWNTO 16);
-      S_data_ori3  <= S_douta_mem(31 DOWNTO 24);
-      S_data_ori4  <= S_douta_mem(39 DOWNTO 32);
-      S_data_ori5  <= S_douta_mem(47 DOWNTO 40);
-      S_data_ori6  <= S_douta_mem(55 DOWNTO 48);
-      S_data_ori7  <= S_douta_mem(63 DOWNTO 56);
-      S_data_ori8  <= S_douta_mem(71 DOWNTO 64);
-      S_data_ori9  <= S_douta_mem(79 DOWNTO 72);
-      S_data_ori10 <= S_douta_mem(87 DOWNTO 80);
-      S_data_ori11 <= S_douta_mem(95 DOWNTO 88);
-      S_data_ori12 <= S_douta_mem(103 DOWNTO 96);
-      S_data_ori13 <= S_douta_mem(111 DOWNTO 104);
-      S_data_ori14 <= S_douta_mem(119 DOWNTO 112);
-      S_data_ori15 <= S_douta_mem(127 DOWNTO 120);
+      S_data_mod0  <= S_douta_mem(7 DOWNTO 0);
+      S_data_mod1  <= S_douta_mem(15 DOWNTO 8);
+      S_data_mod2  <= S_douta_mem(23 DOWNTO 16);
+      S_data_mod3  <= S_douta_mem(31 DOWNTO 24);
+      S_data_mod4  <= S_douta_mem(39 DOWNTO 32);
+      S_data_mod5  <= S_douta_mem(47 DOWNTO 40);
+      S_data_mod6  <= S_douta_mem(55 DOWNTO 48);
+      S_data_mod7  <= S_douta_mem(63 DOWNTO 56);
+      S_data_mod8  <= S_douta_mem(71 DOWNTO 64);
+      S_data_mod9  <= S_douta_mem(79 DOWNTO 72);
+      S_data_mod10 <= S_douta_mem(87 DOWNTO 80);
+      S_data_mod11 <= S_douta_mem(95 DOWNTO 88);
+      S_data_mod12 <= S_douta_mem(103 DOWNTO 96);
+      S_data_mod13 <= S_douta_mem(111 DOWNTO 104);
+      S_data_mod14 <= S_douta_mem(119 DOWNTO 112);
+      S_data_mod15 <= S_douta_mem(127 DOWNTO 120);
     END IF;
   END PROCESS;
 
@@ -151,21 +151,21 @@ BEGIN
     END IF;
   END PROCESS;
 
-  O_data_ori0  <= S_data_ori0;
-  O_data_ori1  <= S_data_ori1;
-  O_data_ori2  <= S_data_ori2;
-  O_data_ori3  <= S_data_ori3;
-  O_data_ori4  <= S_data_ori4;
-  O_data_ori5  <= S_data_ori5;
-  O_data_ori6  <= S_data_ori6;
-  O_data_ori7  <= S_data_ori7;
-  O_data_ori8  <= S_data_ori8;
-  O_data_ori9  <= S_data_ori9;
-  O_data_ori10 <= S_data_ori10;
-  O_data_ori11 <= S_data_ori11;
-  O_data_ori12 <= S_data_ori12;
-  O_data_ori13 <= S_data_ori13;
-  O_data_ori14 <= S_data_ori14;
-  O_data_ori15 <= S_data_ori15;
+  O_data_mod0  <= S_data_mod0;
+  O_data_mod1  <= S_data_mod1;
+  O_data_mod2  <= S_data_mod2;
+  O_data_mod3  <= S_data_mod3;
+  O_data_mod4  <= S_data_mod4;
+  O_data_mod5  <= S_data_mod5;
+  O_data_mod6  <= S_data_mod6;
+  O_data_mod7  <= S_data_mod7;
+  O_data_mod8  <= S_data_mod8;
+  O_data_mod9  <= S_data_mod9;
+  O_data_mod10 <= S_data_mod10;
+  O_data_mod11 <= S_data_mod11;
+  O_data_mod12 <= S_data_mod12;
+  O_data_mod13 <= S_data_mod13;
+  O_data_mod14 <= S_data_mod14;
+  O_data_mod15 <= S_data_mod15;
 
 END Behavioral;

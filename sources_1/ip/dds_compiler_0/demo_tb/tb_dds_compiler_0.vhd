@@ -89,14 +89,15 @@ architecture tb of tb_dds_compiler_0 is
 
   -- General inputs
   signal aclk                            : std_logic := '0';  -- the master clock
+  signal aresetn                         : std_logic := '1';  -- synchronous active low reset, overrides aclken
+
+  -- Phase slave channel signals
+  signal s_axis_phase_tvalid             : std_logic := '0';  -- payload is valid
+  signal s_axis_phase_tdata              : std_logic_vector(15 downto 0) := (others => '0');  -- data payload
 
   -- Data master channel signals
   signal m_axis_data_tvalid              : std_logic := '0';  -- payload is valid
   signal m_axis_data_tdata               : std_logic_vector(31 downto 0) := (others => '0');  -- data payload
-
-  -- Phase master channel signals
-  signal m_axis_phase_tvalid             : std_logic := '0';  -- payload is valid
-  signal m_axis_phase_tdata              : std_logic_vector(15 downto 0) := (others => '0');  -- data payload
 
   -----------------------------------------------------------------------
   -- Aliases for AXI channel TDATA and TUSER fields
@@ -105,12 +106,12 @@ architecture tb of tb_dds_compiler_0 is
   -- to prevent the simulator optimizing away these signals.
   -----------------------------------------------------------------------
 
+  -- Phase slave channel alias signals
+  signal s_axis_phase_tdata_phase      : std_logic_vector(15 downto 0) := (others => '0');
+
   -- Data master channel alias signals
   signal m_axis_data_tdata_cosine      : std_logic_vector(15 downto 0) := (others => '0');
   signal m_axis_data_tdata_sine        : std_logic_vector(15 downto 0) := (others => '0');
-
-  -- Phase master channel alias signals
-  signal m_axis_phase_tdata_phase      : std_logic_vector(11 downto 0) := (others => '0');
 
 
   signal end_of_simulation : boolean := false;
@@ -124,10 +125,11 @@ begin
   dut : entity work.dds_compiler_0
     port map (
       aclk                            => aclk
+      ,aresetn                         => aresetn
+      ,s_axis_phase_tvalid             => s_axis_phase_tvalid
+      ,s_axis_phase_tdata              => s_axis_phase_tdata
       ,m_axis_data_tvalid              => m_axis_data_tvalid
       ,m_axis_data_tdata               => m_axis_data_tdata
-      ,m_axis_phase_tvalid             => m_axis_phase_tvalid
-      ,m_axis_phase_tdata              => m_axis_phase_tdata
       );
 
   -----------------------------------------------------------------------
@@ -155,14 +157,44 @@ begin
   -----------------------------------------------------------------------
 
   stimuli : process
+    variable phase : unsigned(15 downto 0);  -- internal variable for phase input calculations
   begin
 
     -- Drive inputs T_HOLD time after rising edge of clock
     wait until rising_edge(aclk);
     wait for T_HOLD;
 
+    -- Input an incrementing phase each cycle, and run for long enough to produce 5 periods of outputs
+    phase := "0000000000000000";  -- start with zero phase
+    for cycle in 0 to 159 loop
+      s_axis_phase_tvalid  <= '1';
+      s_axis_phase_tdata <= (others => '0');  -- set unused TDATA bits to zero
+      s_axis_phase_tdata(15 downto 0) <= std_logic_vector(phase);  -- phase index
+      wait for CLOCK_PERIOD;
+      phase := phase + "0000000000000000";  -- increment input phase by fixed amount each cycle
+    end loop;
+    s_axis_phase_tvalid <= '0';
+
+    -- Set up phase slave channel to input constant data every clock cycle, then demonstrate:
+    --   pausing the core by deasserting TVALID
+    --   reset
+    s_axis_phase_tvalid <= '1';
+    s_axis_phase_tdata  <= (others => '0');  -- set unused TDATA bits to zero
+    s_axis_phase_tdata(15 downto 0) <= "0000000000000000";  -- zero phase index
+    wait for CLOCK_PERIOD * 20;
+
+    -- Pause the core by deasserting TVALID of the phase slave channel
+    s_axis_phase_tvalid <= '0';
+    wait for CLOCK_PERIOD * 10;
+    s_axis_phase_tvalid <= '1';
+    wait for CLOCK_PERIOD * 20;
+
+    -- Reset the core, then continue running
+    aresetn <= '0';  -- Reset is active low
+    wait for CLOCK_PERIOD * 2;  -- Hold reset for 2 clock cycles, as specified in the DDS Compiler datasheet
+    aresetn <= '1';
     -- Run for long enough to produce 5 periods of outputs
-    wait for CLOCK_PERIOD * 5;
+    wait for CLOCK_PERIOD * 160;
 
     -- End of test
     end_of_simulation <= true;           
@@ -185,20 +217,12 @@ begin
 
     -- Do not check the output payload values, as this requires the behavioral model
     -- which would make this demonstration testbench unwieldy.
-    -- Instead, check the protocol of the data and phase master channels:
+    -- Instead, check the protocol of the data master channel:
     -- check that the payload is valid (not X) when TVALID is high
 
-    if m_axis_data_tvalid = '1' then
+    if m_axis_data_tvalid = '1' and aresetn = '1' then
       if is_x(m_axis_data_tdata) then
         report "ERROR: m_axis_data_tdata is invalid when m_axis_data_tvalid is high" severity error;
-        check_ok := false;
-      end if;
-
-    end if;
-
-    if m_axis_phase_tvalid = '1' then
-      if is_x(m_axis_phase_tdata) then
-        report "ERROR: m_axis_phase_tdata is invalid when m_axis_phase_tvalid is high" severity error;
         check_ok := false;
       end if;
 
@@ -213,12 +237,12 @@ begin
   -- Assign TDATA fields to aliases, for easy simulator waveform viewing
   -----------------------------------------------------------------------
 
+  -- Phase slave channel alias signals
+  s_axis_phase_tdata_phase      <= s_axis_phase_tdata(15 downto 0);
+
   -- Data master channel alias signals: update these only when they are valid
   m_axis_data_tdata_cosine      <= m_axis_data_tdata(15 downto 0) when m_axis_data_tvalid = '1';
   m_axis_data_tdata_sine        <= m_axis_data_tdata(31 downto 16) when m_axis_data_tvalid = '1';
-
-  -- Phase master channel alias signals: update these only when they are valid
-  m_axis_phase_tdata_phase      <= m_axis_phase_tdata(11 downto 0) when m_axis_phase_tvalid = '1';
 
 end tb;
 
