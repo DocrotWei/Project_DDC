@@ -109,25 +109,13 @@ ARCHITECTURE Behavioral OF sig_gen_sim IS
 
 BEGIN
 
-  S_rst_n <= '1',
-    '0' AFTER 100 ns,
-    '1' AFTER 200 ns,
-    '0' AFTER 1 us,
-    '1' AFTER 1100 ns,
-    '0' AFTER 2 us,
-    '1' AFTER 2100 ns,
-    '0' AFTER 3 us,
-    '1' AFTER 3100 ns,
-    '0' AFTER 4 us,
-    '1' AFTER 4100 ns,
-    '0' AFTER 5 us,
-    '1' AFTER 5100 ns,
-    '0' AFTER 6 us,
-    '1' AFTER 6100 ns,
-    '0' AFTER 7 us,
-    '1' AFTER 7100 ns,
-    '0' AFTER 8 us,
-    '1' AFTER 8100 ns;
+S_rst_n<='1',
+'0' after 100 ns,
+'1' after 200 ns,
+'0' after 200200 ns,
+'1' after 200300 ns,
+'0' after 400300 ns;
+
 
   S_clk <= NOT S_clk AFTER 5.333 ns;
 
@@ -178,18 +166,32 @@ BEGIN
   END PROCESS;
   PROCESS (S_rst_n, S_clk)
     FILE file1           : text;
+    FILE file2           : text;
+    FILE file3           : text;
+    FILE file4           : text;
+    FILE file5           : text;
+    FILE file6           : text;
+    FILE file7           : text;
+    FILE file8           : text;
+
     VARIABLE file_status : file_open_status;
     VARIABLE buf         : LINE;
     --  variable cnt_from_file_r:std_logic_vector(7 downto 0):=(others=>'0');
     VARIABLE cnt_from_file_r : natural         := 0;
     VARIABLE file_name       : string(1 TO 11) := "nihaonihaon";
-    CONSTANT rst_cnt_stop    : natural         := 10;
+    CONSTANT rst_cnt_stop    : natural         := 3;
   BEGIN
     IF rising_edge(S_clk) THEN
       CASE c_status IS
         WHEN s_idle => c_status <= s_write;
           file_open(file_status, file1, "data_record0.txt", write_mode);
-
+          file_open(file_status, file2, "data_record1.txt", write_mode);
+          file_open(file_status, file3, "data_record2.txt", write_mode);
+          file_open(file_status, file4, "data_record3.txt", write_mode);
+          file_open(file_status, file5, "data_record4.txt", write_mode);
+          file_open(file_status, file6, "data_record5.txt", write_mode);
+          file_open(file_status, file7, "data_record6.txt", write_mode);
+          file_open(file_status, file8, "data_record7.txt", write_mode);
         WHEN s_write => IF rst_cnt >= rst_cnt_stop THEN
           c_status <= s_write_end;
         ELSE
@@ -197,8 +199,29 @@ BEGIN
       END IF;
       write(buf, conv_integer(S_data_mod0));
       writeline(file1, buf);
-
-      WHEN s_write_end => file_close(file1);
+      write(buf, conv_integer(S_data_mod1));
+      writeline(file2, buf);
+      write(buf, conv_integer(S_data_mod2));
+      writeline(file3, buf);
+      write(buf, conv_integer(S_data_mod3));
+      writeline(file4, buf);
+      write(buf, conv_integer(S_data_mod4));
+      writeline(file5, buf);
+      write(buf, conv_integer(S_data_mod5));
+      writeline(file6, buf);
+      write(buf, conv_integer(S_data_mod6));
+      writeline(file7, buf);
+      write(buf, conv_integer(S_data_mod7));
+      writeline(file8, buf);
+      WHEN s_write_end => 
+      file_close(file1);
+      file_close(file2);
+      file_close(file3);
+      file_close(file4);
+      file_close(file5);
+      file_close(file6);
+      file_close(file7);
+      file_close(file8);
       c_status <= s_end;
 
       -- when s_read_begin =>    file_open(file_status,file1,"sinWave.txt",read_mode);
@@ -218,6 +241,13 @@ BEGIN
       --                         end if;
       WHEN s_end => c_status <= s_end;
       file_close(file1);
+      file_close(file2);
+      file_close(file3);
+      file_close(file4);
+      file_close(file5);
+      file_close(file6);
+      file_close(file7);
+      file_close(file8);
 
       WHEN OTHERS => c_status <= s_end;
     END CASE;

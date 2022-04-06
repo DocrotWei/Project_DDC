@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
 -- Date        : Tue Apr  5 19:57:30 2022
 -- Host        : LAPTOP-Chen running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               E:/EngineeringProject/DDC/DDCProjectFile/project_DDC/project_DDC.srcs/sources_1/ip/dds_compiler_0/dds_compiler_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top dds_compiler_0 -prefix
+--               dds_compiler_0_ dds_compiler_0_stub.vhdl
 -- Design      : dds_compiler_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7vx690tffg1761-2

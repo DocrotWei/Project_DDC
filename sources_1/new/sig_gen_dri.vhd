@@ -30,6 +30,7 @@ USE ieee.Std_logic_unSigned.ALL;
 --library UNISIM;
 --uSe UNISIM.VComponentS.all;
 
+--DDC Generate module. Generata data from ROM. 
 ENTITY sig_gen_dri IS
   PORT (
     I_clk        : IN std_logic;
@@ -131,7 +132,7 @@ BEGIN
   blk_men_gen_0_u : blk_mem_gen_0
   PORT MAP(
     clka  => I_clk,
-    ena   => '1',
+    ena   => I_rst_n,
     wea   => "0",
     addra => S_addr_mem,
     dina  => S_dina_mem,

@@ -45,7 +45,7 @@ ENTITY DDC_ctr IS
     I_clk   : IN std_logic;
     I_rst_n : IN std_logic;
 
-    ----------------------è¾“å‡ºä¿¡å·--------------------------------
+    ----------------------Êä³öÐÅºÅ--------------------------------
     O_data_mod_I0  : OUT std_logic_vector(7 DOWNTO 0);
     O_data_mod_Q0  : OUT std_logic_vector(7 DOWNTO 0);
     O_data_mod_I1  : OUT std_logic_vector(7 DOWNTO 0);
@@ -110,7 +110,7 @@ ARCHITECTURE Behavioral OF DDC_ctr IS
     PORT (
       I_clk   : IN std_logic;
       I_rst_n : IN std_logic;
-      -----------------------è¾“å…¥ä¿¡å·------------------------------
+      -----------------------ÊäÈëÐÅºÅ------------------------------
       I_data_mod0  : IN std_logic_vector(7 DOWNTO 0);
       I_data_mod1  : IN std_logic_vector(7 DOWNTO 0);
       I_data_mod2  : IN std_logic_vector(7 DOWNTO 0);
@@ -128,7 +128,7 @@ ARCHITECTURE Behavioral OF DDC_ctr IS
       I_data_mod14 : IN std_logic_vector(7 DOWNTO 0);
       I_data_mod15 : IN std_logic_vector(7 DOWNTO 0);
 
-      ----------------------è¾“å‡ºä¿¡å·--------------------------------
+      ----------------------Êä³öÐÅºÅ--------------------------------
       O_data_mod_I0  : OUT std_logic_vector(7 DOWNTO 0);
       O_data_mod_Q0  : OUT std_logic_vector(7 DOWNTO 0);
       O_data_mod_I1  : OUT std_logic_vector(7 DOWNTO 0);
@@ -243,7 +243,7 @@ BEGIN
   PORT MAP(
     I_clk   => I_clk,
     I_rst_n => I_rst_n,
-    -----------------------è¾“å…¥ä¿¡å·------------------------------
+    -----------------------ÊäÈëÐÅºÅ------------------------------
     I_data_mod0  => S_data_mod0,
     I_data_mod1  => S_data_mod1,
     I_data_mod2  => S_data_mod2,
@@ -261,7 +261,7 @@ BEGIN
     I_data_mod14 => S_data_mod14,
     I_data_mod15 => S_data_mod15,
 
-    ----------------------è¾“å‡ºä¿¡å·--------------------------------
+    ----------------------Êä³öÐÅºÅ--------------------------------
     O_data_mod_I0  => S_data_mod_I0,
     O_data_mod_Q0  => S_data_mod_Q0,
     O_data_mod_I1  => S_data_mod_I1,
