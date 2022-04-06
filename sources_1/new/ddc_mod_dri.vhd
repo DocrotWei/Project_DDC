@@ -323,22 +323,22 @@ BEGIN
       s_Phase15 <= Phase_inital15 + s_Phase_Accu;
     END IF;
   END PROCESS;
-  s_Phase0_16bit  <=s_Phase0(47 DOWNTO 32);
-  s_Phase1_16bit  <=s_Phase1(47 DOWNTO 32);
-  s_Phase2_16bit  <=s_Phase2(47 DOWNTO 32);
-  s_Phase3_16bit  <=s_Phase3(47 DOWNTO 32);
-  s_Phase4_16bit  <=s_Phase4(47 DOWNTO 32);
-  s_Phase5_16bit  <=s_Phase5(47 DOWNTO 32);
-  s_Phase6_16bit  <=s_Phase6(47 DOWNTO 32);
-  s_Phase7_16bit  <=s_Phase7(47 DOWNTO 32);
-  s_Phase8_16bit  <=s_Phase8(47 DOWNTO 32);
-  s_Phase9_16bit  <=s_Phase9(47 DOWNTO 32);
-  s_Phase10_16bit <=s_Phase10(47 DOWNTO 32);
-  s_Phase11_16bit <=s_Phase11(47 DOWNTO 32);
-  s_Phase12_16bit <=s_Phase12(47 DOWNTO 32);
-  s_Phase13_16bit <=s_Phase13(47 DOWNTO 32);
-  s_Phase14_16bit <=s_Phase14(47 DOWNTO 32);
-  s_Phase15_16bit <=s_Phase15(47 DOWNTO 32);
+  s_Phase0_16bit  <=s_Phase0(47 DOWNTO 32) +s_Phase0(31);
+  s_Phase1_16bit  <=s_Phase1(47 DOWNTO 32)+s_Phase1(31);
+  s_Phase2_16bit  <=s_Phase2(47 DOWNTO 32)+s_Phase2(31);
+  s_Phase3_16bit  <=s_Phase3(47 DOWNTO 32)+s_Phase3(31);
+  s_Phase4_16bit  <=s_Phase4(47 DOWNTO 32)+s_Phase4(31);
+  s_Phase5_16bit  <=s_Phase5(47 DOWNTO 32)+s_Phase5(31);
+  s_Phase6_16bit  <=s_Phase6(47 DOWNTO 32)+s_Phase6(31);
+  s_Phase7_16bit  <=s_Phase7(47 DOWNTO 32)+s_Phase7(31);
+  s_Phase8_16bit  <=s_Phase8(47 DOWNTO 32)+s_Phase8(31);
+  s_Phase9_16bit  <=s_Phase9(47 DOWNTO 32)+s_Phase9(31);
+  s_Phase10_16bit <=s_Phase10(47 DOWNTO 32)+s_Phase10(31);
+  s_Phase11_16bit <=s_Phase11(47 DOWNTO 32)+s_Phase11(31);
+  s_Phase12_16bit <=s_Phase12(47 DOWNTO 32)+s_Phase12(31);
+  s_Phase13_16bit <=s_Phase13(47 DOWNTO 32)+s_Phase13(31);
+  s_Phase14_16bit <=s_Phase14(47 DOWNTO 32)+s_Phase14(31);
+  s_Phase15_16bit <=s_Phase15(47 DOWNTO 32)+s_Phase15(31);
 
   Sin_Cosine_Lut_lane0 : ddS_compiler_0
   PORT MAP

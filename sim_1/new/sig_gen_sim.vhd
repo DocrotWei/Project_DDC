@@ -109,14 +109,12 @@ ARCHITECTURE Behavioral OF sig_gen_sim IS
 
 BEGIN
 
-S_rst_n<='1',
-'0' after 100 ns,
-'1' after 200 ns,
-'0' after 200200 ns,
-'1' after 200300 ns,
-'0' after 400300 ns;
-
-
+  S_rst_n <= '1',
+    '0' AFTER 100 ns,
+    '1' AFTER 200 ns,
+    '0' AFTER 200200 ns,
+    '1' AFTER 200300 ns,
+    '0' AFTER 400300 ns;
   S_clk <= NOT S_clk AFTER 5.333 ns;
 
   sig_gen_dri_u : sig_gen_dri
@@ -165,14 +163,14 @@ S_rst_n<='1',
     END IF;
   END PROCESS;
   PROCESS (S_rst_n, S_clk)
-    FILE file1           : text;
-    FILE file2           : text;
-    FILE file3           : text;
-    FILE file4           : text;
-    FILE file5           : text;
-    FILE file6           : text;
-    FILE file7           : text;
-    FILE file8           : text;
+    FILE file1 : text;
+    FILE file2 : text;
+    FILE file3 : text;
+    FILE file4 : text;
+    FILE file5 : text;
+    FILE file6 : text;
+    FILE file7 : text;
+    FILE file8 : text;
 
     VARIABLE file_status : file_open_status;
     VARIABLE buf         : LINE;
@@ -213,7 +211,7 @@ S_rst_n<='1',
       writeline(file7, buf);
       write(buf, conv_integer(S_data_mod7));
       writeline(file8, buf);
-      WHEN s_write_end => 
+      WHEN s_write_end =>
       file_close(file1);
       file_close(file2);
       file_close(file3);
