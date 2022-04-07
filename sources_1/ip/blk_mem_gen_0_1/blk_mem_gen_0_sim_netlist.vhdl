@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
--- Date        : Fri Apr  1 21:43:28 2022
+-- Date        : Thu Apr  7 15:02:19 2022
 -- Host        : LAPTOP-Chen running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               e:/EngineeringProject/DDC/DDCProjectFile/project_DDC/project_DDC.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0_sim_netlist.vhdl
+--               E:/EngineeringProject/DDC/DDCProjectFile/project_DDC/project_DDC.srcs/sources_1/ip/blk_mem_gen_0_1/blk_mem_gen_0_sim_netlist.vhdl
 -- Design      : blk_mem_gen_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
