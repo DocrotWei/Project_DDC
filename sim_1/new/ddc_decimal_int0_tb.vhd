@@ -121,11 +121,25 @@ ARCHITECTURE Behavioral OF ddc_decimal_int0_tb IS
       I_data_mod_Q15 : IN std_logic_vector(7 DOWNTO 0);
 
       O_data_d0_I0       : OUT std_logic_vector(11 DOWNTO 0);
+
       O_data_pipel0_I0_0 : OUT std_logic_vector(8 DOWNTO 0);
       O_data_pipel0_I0_1 : OUT std_logic_vector(8 DOWNTO 0);
       O_data_pipel0_I0_2 : OUT std_logic_vector(8 DOWNTO 0);
       O_data_pipel0_I0_3 : OUT std_logic_vector(8 DOWNTO 0);
-      O_data_pipel0_I0_4 : OUT std_logic_vector(8 DOWNTO 0)
+      O_data_pipel0_I0_4 : OUT std_logic_vector(8 DOWNTO 0);
+  
+      O_data_pipel1_I0_0 : OUT std_logic_vector(24 DOWNTO 0);
+      O_data_pipel1_I0_1 : OUT std_logic_vector(24 DOWNTO 0);
+      O_data_pipel1_I0_2 : OUT std_logic_vector(24 DOWNTO 0);
+      O_data_pipel1_I0_3 : OUT std_logic_vector(24 DOWNTO 0);
+      O_data_pipel1_I0_4 : OUT std_logic_vector(24 DOWNTO 0);
+  
+      O_data_pipel2_I0_0 : OUT std_logic_vector(24 DOWNTO 0);
+      O_data_pipel2_I0_1 : OUT std_logic_vector(24 DOWNTO 0);
+      O_data_pipel2_I0_2 : OUT std_logic_vector(24 DOWNTO 0);
+  
+      O_data_pipel3_I0_0 : OUT std_logic_vector(25 DOWNTO 0);
+      O_data_pipel3_I0_1 : OUT std_logic_vector(25 DOWNTO 0)
     );
   END COMPONENT;
 
@@ -174,11 +188,29 @@ ARCHITECTURE Behavioral OF ddc_decimal_int0_tb IS
   SIGNAL S_data_mod_Q15 : std_logic_vector(7 DOWNTO 0)  := (OTHERS => '0');
   SIGNAL S_data_d0_I0   : std_logic_vector(11 DOWNTO 0) := (OTHERS => '0');
 
-  SIGNAL S_data_pipel0_I0_0 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL S_data_pipel0_I0_1 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL S_data_pipel0_I0_2 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL S_data_pipel0_I0_3 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL S_data_pipel0_I0_4 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+--------------------------------测试信号------------------------------------
+
+SIGNAL S_data_pipel0_I0_0 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel0_I0_1 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel0_I0_2 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel0_I0_3 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel0_I0_4 : std_logic_vector(8 DOWNTO 0) := (OTHERS => '0');
+
+--------------------------------第二级流水参数-----------------------------------
+SIGNAL S_data_pipel1_I0_0 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel1_I0_1 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel1_I0_2 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel1_I0_3 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel1_I0_4 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+--------------------------------第三级流水参数-----------------------------------
+SIGNAL S_data_pipel2_I0_0 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel2_I0_1 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel2_I0_2 : std_logic_vector(24 DOWNTO 0) := (OTHERS => '0');
+
+--------------------------------第四级流水参数-----------------------------------
+SIGNAL S_data_pipel3_I0_0 : std_logic_vector(25 DOWNTO 0) := (OTHERS => '0');
+SIGNAL S_data_pipel3_I0_1 : std_logic_vector(25 DOWNTO 0) := (OTHERS => '0');
+
 BEGIN
 
   S_rst_n <= '1',
@@ -268,7 +300,20 @@ BEGIN
     O_data_pipel0_I0_1 => S_data_pipel0_I0_1,
     O_data_pipel0_I0_2 => S_data_pipel0_I0_2,
     O_data_pipel0_I0_3 => S_data_pipel0_I0_3,
-    O_data_pipel0_I0_4 => S_data_pipel0_I0_4
+    O_data_pipel0_I0_4 => S_data_pipel0_I0_4,
+
+    O_data_pipel1_I0_0 => S_data_pipel1_I0_0,
+    O_data_pipel1_I0_1 => S_data_pipel1_I0_1,
+    O_data_pipel1_I0_2 => S_data_pipel1_I0_2,
+    O_data_pipel1_I0_3 => S_data_pipel1_I0_3,
+    O_data_pipel1_I0_4 => S_data_pipel1_I0_4,
+
+    O_data_pipel2_I0_0 => S_data_pipel2_I0_0,
+    O_data_pipel2_I0_1 => S_data_pipel2_I0_1,
+    O_data_pipel2_I0_2 => S_data_pipel2_I0_2,
+
+    O_data_pipel3_I0_0 => S_data_pipel3_I0_0,
+    O_data_pipel3_I0_1 => S_data_pipel3_I0_1
   );
 
   -----------------------文件写入部分-----------------------------------
@@ -308,14 +353,14 @@ BEGIN
       CASE c_status IS
         WHEN s_idle =>
           c_status <= s_write;
-          file_open(file_status, file0, "S_data_pipel0_I0_1.txt", write_mode);
+          file_open(file_status, file0, "S_data_d0_I0.txt", write_mode);
         WHEN s_write =>
           IF rst_cnt >= rst_cnt_stop THEN
             c_status <= s_end;
           ELSE
             c_status <= s_write;
           END IF;
-          write(buf, conv_integer(S_data_pipel0_I0_1));
+          write(buf, conv_integer(S_data_d0_I0));
           writeline(file0, buf);
         WHEN s_end =>
           c_status <= s_end;
