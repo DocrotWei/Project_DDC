@@ -40,7 +40,7 @@ ENTITY ddc_decimal_int0_tb IS
 END ddc_decimal_int0_tb;
 
 ARCHITECTURE Behavioral OF ddc_decimal_int0_tb IS
-  COMPONENT DDC_ctr IS
+  COMPONENT ddc_ctr IS
     PORT (
       I_clk   : IN std_logic;
       I_rst_n : IN std_logic;
@@ -395,23 +395,23 @@ BEGIN
       CASE c_status IS
         WHEN s_idle =>
           c_status <= s_write;
-          file_open(file_status, file0, "S_data_d0_Q0.txt", write_mode);
-          file_open(file_status, file1, "S_data_d0_Q1.txt", write_mode);
-          file_open(file_status, file2, "S_data_d0_Q2.txt", write_mode);
-          file_open(file_status, file3, "S_data_d0_Q3.txt", write_mode);
+          file_open(file_status, file0, "S_data_d0_Q4.txt", write_mode);
+          file_open(file_status, file1, "S_data_d0_Q5.txt", write_mode);
+          file_open(file_status, file2, "S_data_d0_Q6.txt", write_mode);
+          file_open(file_status, file3, "S_data_d0_Q7.txt", write_mode);
         WHEN s_write =>
           IF rst_cnt >= rst_cnt_stop THEN
             c_status <= s_end;
           ELSE
             c_status <= s_write;
           END IF;
-          write(buf, conv_integer(S_data_d0_Q0));
+          write(buf, conv_integer(S_data_d0_Q4));
           writeline(file0, buf);
-          write(buf, conv_integer(S_data_d0_Q1));
+          write(buf, conv_integer(S_data_d0_Q5));
           writeline(file1, buf);
-          write(buf, conv_integer(S_data_d0_Q2));
+          write(buf, conv_integer(S_data_d0_Q6));
           writeline(file2, buf);
-          write(buf, conv_integer(S_data_d0_Q3));
+          write(buf, conv_integer(S_data_d0_Q7));
           writeline(file3, buf);
         WHEN s_end =>
           c_status <= s_end;

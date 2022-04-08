@@ -40,7 +40,7 @@ USE UNISIM.VComponents.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-ENTITY DDC_ctr IS
+ENTITY ddc_ctr IS
   PORT (
     I_clk   : IN std_logic;
     I_rst_n : IN std_logic;
@@ -79,7 +79,7 @@ ENTITY DDC_ctr IS
     O_data_mod_I15 : OUT std_logic_vector(7 DOWNTO 0);
     O_data_mod_Q15 : OUT std_logic_vector(7 DOWNTO 0)
   );
-END DDC_ctr;
+END ddc_ctr;
 ARCHITECTURE Behavioral OF DDC_ctr IS
 
   COMPONENT sig_gen_dri

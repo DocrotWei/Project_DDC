@@ -124,23 +124,7 @@ ARCHITECTURE Behavioral OF ddc_decimal_int0 IS
   CONSTANT HB_COE4    : std_logic_vector(15 DOWNTO 0) := conv_std_logic_vector(-2336, 16);
   CONSTANT HB_COE6    : std_logic_vector(15 DOWNTO 0) := conv_std_logic_vector(9991, 16);
   CONSTANT HB_COE7    : std_logic_vector(15 DOWNTO 0) := conv_std_logic_vector(16384, 16);
-  SIGNAL s_data_d0_I0 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_I1 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_I2 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_I3 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_I4 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_I5 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_I6 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_I7 : std_logic_vector(12 DOWNTO 0);
 
-  SIGNAL s_data_d0_Q0 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_Q1 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_Q2 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_Q3 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_Q4 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_Q5 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_Q6 : std_logic_vector(12 DOWNTO 0);
-  SIGNAL s_data_d0_Q7 : std_logic_vector(12 DOWNTO 0);
   --------------------------------输入信号流水--------------------------------------
   SIGNAL S_data_mod_I0  : std_logic_vector(7 DOWNTO 0);
   SIGNAL S_data_mod_Q0  : std_logic_vector(7 DOWNTO 0);
@@ -1707,11 +1691,11 @@ BEGIN
       s_data_pipel4_Q4   <= (OTHERS => '0');
     ELSIF rising_edge(I_clk) THEN
       -------------------第一级流水 扩符号位相加-------------------------
-      S_data_pipel0_Q4_0 <= S_data_mod_I15(7) & S_data_mod_I15;
-      S_data_pipel0_Q4_1 <= (S_data_mod_I8(7) & S_data_mod_I8) + (I_data_mod_I6(7) & I_data_mod_I6);
-      S_data_pipel0_Q4_2 <= (S_data_mod_I10(7) & S_data_mod_I10) + (I_data_mod_Q4(7) & I_data_mod_Q4);
-      S_data_pipel0_Q4_3 <= (S_data_mod_I12(7) & S_data_mod_I12) + (I_data_mod_I2(7) & I_data_mod_I2);
-      S_data_pipel0_Q4_4 <= (S_data_mod_I14(7) & S_data_mod_I14) + (I_data_mod_I0(7) & I_data_mod_I0);
+      S_data_pipel0_Q4_0 <= S_data_mod_Q15(7) & S_data_mod_Q15;
+      S_data_pipel0_Q4_1 <= (S_data_mod_Q8(7) & S_data_mod_Q8) + (I_data_mod_Q6(7) & I_data_mod_Q6);
+      S_data_pipel0_Q4_2 <= (S_data_mod_Q10(7) & S_data_mod_Q10) + (I_data_mod_Q4(7) & I_data_mod_Q4);
+      S_data_pipel0_Q4_3 <= (S_data_mod_Q12(7) & S_data_mod_Q12) + (I_data_mod_Q2(7) & I_data_mod_Q2);
+      S_data_pipel0_Q4_4 <= (S_data_mod_Q14(7) & S_data_mod_Q14) + (I_data_mod_Q0(7) & I_data_mod_Q0);
       -------------------第三级流水 24位扩位相加-------------------------
       S_data_pipel2_Q4_0 <= (S_data_pipel1_Q4_0(23) & S_data_pipel1_Q4_0(23 DOWNTO 0)) + (S_data_pipel1_Q4_1(23) & S_data_pipel1_Q4_1(23 DOWNTO 0));
       S_data_pipel2_Q4_1 <= (S_data_pipel1_Q4_2(23) & S_data_pipel1_Q4_2(23 DOWNTO 0));

@@ -113,25 +113,23 @@ ARCHITECTURE Behavioral OF ddc_mod_dri IS
     );
   END COMPONENT;
   -----------------------------固定参数部分----------------------------------------
-  CONSTANT Freq_Word     : std_logic_vector(46 DOWNTO 0) := "00000000000000000000000000000000000000000000000";--750M
-  CONSTANT Phase_inital0  : std_logic_vector(47 DOWNTO 0) := "000000000000000000000000000000000000000000000000"; 
+  CONSTANT Freq_Word      : std_logic_vector(46 DOWNTO 0) := "00000000000000000000000000000000000000000000000";--750M
+  CONSTANT Phase_inital0  : std_logic_vector(47 DOWNTO 0) := "000000000000000000000000000000000000000000000000";
   CONSTANT Phase_inital1  : std_logic_vector(47 DOWNTO 0) := "010000000000000000000000000000000000000000000000";
   CONSTANT Phase_inital2  : std_logic_vector(47 DOWNTO 0) := "100000000000000000000000000000000000000000000000";
   CONSTANT Phase_inital3  : std_logic_vector(47 DOWNTO 0) := "110000000000000000000000000000000000000000000000";
   CONSTANT Phase_inital4  : std_logic_vector(47 DOWNTO 0) := "000000000000000000000000000000000000000000000000";
-  CONSTANT Phase_inital5  : std_logic_vector(47 DOWNTO 0) := "010000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital6  : std_logic_vector(47 DOWNTO 0) := "100000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital7  : std_logic_vector(47 DOWNTO 0) := "110000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital8  : std_logic_vector(47 DOWNTO 0) := "000000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital9  : std_logic_vector(47 DOWNTO 0) := "010000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital10 : std_logic_vector(47 DOWNTO 0) := "100000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital11 : std_logic_vector(47 DOWNTO 0) := "110000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital12 : std_logic_vector(47 DOWNTO 0) := "000000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital13 : std_logic_vector(47 DOWNTO 0) := "010000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital14 : std_logic_vector(47 DOWNTO 0) := "100000000000000000000000000000000000000000000000"; 
-  CONSTANT Phase_inital15 : std_logic_vector(47 DOWNTO 0) := "110000000000000000000000000000000000000000000000"; 
-
-
+  CONSTANT Phase_inital5  : std_logic_vector(47 DOWNTO 0) := "010000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital6  : std_logic_vector(47 DOWNTO 0) := "100000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital7  : std_logic_vector(47 DOWNTO 0) := "110000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital8  : std_logic_vector(47 DOWNTO 0) := "000000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital9  : std_logic_vector(47 DOWNTO 0) := "010000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital10 : std_logic_vector(47 DOWNTO 0) := "100000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital11 : std_logic_vector(47 DOWNTO 0) := "110000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital12 : std_logic_vector(47 DOWNTO 0) := "000000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital13 : std_logic_vector(47 DOWNTO 0) := "010000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital14 : std_logic_vector(47 DOWNTO 0) := "100000000000000000000000000000000000000000000000";
+  CONSTANT Phase_inital15 : std_logic_vector(47 DOWNTO 0) := "110000000000000000000000000000000000000000000000";
   ----------------------------可变参数部分----------------------------------------
   SIGNAL s_PhaseWord        : std_logic_vector(47 DOWNTO 0);
   SIGNAL S_dds_valid_lane0  : std_logic; --dds 通道有效信号
@@ -305,8 +303,8 @@ BEGIN
       s_Phase1 <= (OTHERS => '0');
       --		Phase2 <= (others=>'0');
     ELSIF rising_edge(I_clk) THEN
-      s_Phase0  <= Phase_inital0+s_Phase_Accu;
-      s_Phase1  <= Phase_inital1+ s_Phase_Accu;
+      s_Phase0  <= Phase_inital0 + s_Phase_Accu;
+      s_Phase1  <= Phase_inital1 + s_Phase_Accu;
       s_Phase2  <= Phase_inital2 + s_Phase_Accu;
       s_Phase3  <= Phase_inital3 + s_Phase_Accu;
       s_Phase4  <= Phase_inital4 + s_Phase_Accu;
@@ -323,22 +321,22 @@ BEGIN
       s_Phase15 <= Phase_inital15 + s_Phase_Accu;
     END IF;
   END PROCESS;
-  s_Phase0_16bit  <=s_Phase0(47 DOWNTO 32) +s_Phase0(31);
-  s_Phase1_16bit  <=s_Phase1(47 DOWNTO 32)+s_Phase1(31);
-  s_Phase2_16bit  <=s_Phase2(47 DOWNTO 32)+s_Phase2(31);
-  s_Phase3_16bit  <=s_Phase3(47 DOWNTO 32)+s_Phase3(31);
-  s_Phase4_16bit  <=s_Phase4(47 DOWNTO 32)+s_Phase4(31);
-  s_Phase5_16bit  <=s_Phase5(47 DOWNTO 32)+s_Phase5(31);
-  s_Phase6_16bit  <=s_Phase6(47 DOWNTO 32)+s_Phase6(31);
-  s_Phase7_16bit  <=s_Phase7(47 DOWNTO 32)+s_Phase7(31);
-  s_Phase8_16bit  <=s_Phase8(47 DOWNTO 32)+s_Phase8(31);
-  s_Phase9_16bit  <=s_Phase9(47 DOWNTO 32)+s_Phase9(31);
-  s_Phase10_16bit <=s_Phase10(47 DOWNTO 32)+s_Phase10(31);
-  s_Phase11_16bit <=s_Phase11(47 DOWNTO 32)+s_Phase11(31);
-  s_Phase12_16bit <=s_Phase12(47 DOWNTO 32)+s_Phase12(31);
-  s_Phase13_16bit <=s_Phase13(47 DOWNTO 32)+s_Phase13(31);
-  s_Phase14_16bit <=s_Phase14(47 DOWNTO 32)+s_Phase14(31);
-  s_Phase15_16bit <=s_Phase15(47 DOWNTO 32)+s_Phase15(31);
+  s_Phase0_16bit  <= s_Phase0(47 DOWNTO 32) + s_Phase0(31);
+  s_Phase1_16bit  <= s_Phase1(47 DOWNTO 32) + s_Phase1(31);
+  s_Phase2_16bit  <= s_Phase2(47 DOWNTO 32) + s_Phase2(31);
+  s_Phase3_16bit  <= s_Phase3(47 DOWNTO 32) + s_Phase3(31);
+  s_Phase4_16bit  <= s_Phase4(47 DOWNTO 32) + s_Phase4(31);
+  s_Phase5_16bit  <= s_Phase5(47 DOWNTO 32) + s_Phase5(31);
+  s_Phase6_16bit  <= s_Phase6(47 DOWNTO 32) + s_Phase6(31);
+  s_Phase7_16bit  <= s_Phase7(47 DOWNTO 32) + s_Phase7(31);
+  s_Phase8_16bit  <= s_Phase8(47 DOWNTO 32) + s_Phase8(31);
+  s_Phase9_16bit  <= s_Phase9(47 DOWNTO 32) + s_Phase9(31);
+  s_Phase10_16bit <= s_Phase10(47 DOWNTO 32) + s_Phase10(31);
+  s_Phase11_16bit <= s_Phase11(47 DOWNTO 32) + s_Phase11(31);
+  s_Phase12_16bit <= s_Phase12(47 DOWNTO 32) + s_Phase12(31);
+  s_Phase13_16bit <= s_Phase13(47 DOWNTO 32) + s_Phase13(31);
+  s_Phase14_16bit <= s_Phase14(47 DOWNTO 32) + s_Phase14(31);
+  s_Phase15_16bit <= s_Phase15(47 DOWNTO 32) + s_Phase15(31);
 
   Sin_Cosine_Lut_lane0 : ddS_compiler_0
   PORT MAP
