@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 2022/04/08 14:59:11
 -- Design Name: 
--- Module Name: ddc_decimal_int1 - Behavioral
+-- Module Name: ddc_decimal_int2 - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 

@@ -127,14 +127,14 @@ ARCHITECTURE Behavioral OF ddc_decimal_int2_tb IS
       -- O_data_Decimal_int_Q : OUT std_logic_vector(12 DOWNTO 0)
       -------------------²âÊÔÊä³ö------------------------------------------
 
-      --   O_data_d1_I0 : OUT std_logic_vector(15 DOWNTO 0);
-      --   O_data_d1_I1 : OUT std_logic_vector(15 DOWNTO 0);
-      --   O_data_d1_I2 : OUT std_logic_vector(15 DOWNTO 0);
-      --   O_data_d1_I3 : OUT std_logic_vector(15 DOWNTO 0);
-      --   O_data_d1_Q0 : OUT std_logic_vector(15 DOWNTO 0);
-      --   O_data_d1_Q1 : OUT std_logic_vector(15 DOWNTO 0);
-      --   O_data_d1_Q2 : OUT std_logic_vector(15 DOWNTO 0);
-      --   O_data_d1_Q3 : OUT std_logic_vector(15 DOWNTO 0)
+      O_data_d1_I0 : OUT std_logic_vector(15 DOWNTO 0);
+      O_data_d1_I1 : OUT std_logic_vector(15 DOWNTO 0);
+      O_data_d1_I2 : OUT std_logic_vector(15 DOWNTO 0);
+      O_data_d1_I3 : OUT std_logic_vector(15 DOWNTO 0);
+      O_data_d1_Q0 : OUT std_logic_vector(15 DOWNTO 0);
+      O_data_d1_Q1 : OUT std_logic_vector(15 DOWNTO 0);
+      O_data_d1_Q2 : OUT std_logic_vector(15 DOWNTO 0);
+      O_data_d1_Q3 : OUT std_logic_vector(15 DOWNTO 0);
 
       O_data_d2_I0 : OUT std_logic_vector(15 DOWNTO 0);
       O_data_d2_I1 : OUT std_logic_vector(15 DOWNTO 0);
@@ -246,6 +246,7 @@ BEGIN
     O_data_mod_I15 => S_data_mod_I15,
     O_data_mod_Q15 => S_data_mod_Q15
   );
+  
   ddc_decimal_int_ctr_u : ddc_decimal_int_ctr
   PORT MAP(
     I_clk          => S_clk,
@@ -282,6 +283,16 @@ BEGIN
     I_data_mod_Q14 => S_data_mod_Q14,
     I_data_mod_I15 => S_data_mod_I15,
     I_data_mod_Q15 => S_data_mod_Q15,
+
+    O_data_d1_I0 => S_data_d1_I0,
+    O_data_d1_I1 => S_data_d1_I1,
+    O_data_d1_I2 => S_data_d1_I2,
+    O_data_d1_I3 => S_data_d1_I3,
+    O_data_d1_Q0 => S_data_d1_Q0,
+    O_data_d1_Q1 => S_data_d1_Q1,
+    O_data_d1_Q2 => S_data_d1_Q2,
+    O_data_d1_Q3 => S_data_d1_Q3,
+
     O_data_d2_I0 => S_data_d2_I0,
     O_data_d2_I1 => S_data_d2_I1,
     O_data_d2_Q0 => S_data_d2_Q0,

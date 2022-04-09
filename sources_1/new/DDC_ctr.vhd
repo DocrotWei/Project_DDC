@@ -80,7 +80,7 @@ ENTITY ddc_ctr IS
     O_data_mod_Q15 : OUT std_logic_vector(7 DOWNTO 0)
   );
 END ddc_ctr;
-ARCHITECTURE Behavioral OF DDC_ctr IS
+ARCHITECTURE Behavioral OF ddc_ctr IS
 
   COMPONENT sig_gen_dri
     PORT (

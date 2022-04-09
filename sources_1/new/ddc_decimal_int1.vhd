@@ -376,6 +376,7 @@ BEGIN
       S_data_d0_I5_0 <= I_data_d0_I5;
       S_data_d0_I6_0 <= I_data_d0_I6;
       S_data_d0_I7_0 <= I_data_d0_I7;
+      
       S_data_d0_Q0_0 <= I_data_d0_Q0;
       S_data_d0_Q1_0 <= I_data_d0_Q1;
       S_data_d0_Q2_0 <= I_data_d0_Q2;
@@ -384,6 +385,7 @@ BEGIN
       S_data_d0_Q5_0 <= I_data_d0_Q5;
       S_data_d0_Q6_0 <= I_data_d0_Q6;
       S_data_d0_Q7_0 <= I_data_d0_Q7;
+      
       S_data_d0_I0_1 <= S_data_d0_I0_0;
       S_data_d0_I1_1 <= S_data_d0_I1_0;
       S_data_d0_I2_1 <= S_data_d0_I2_0;
@@ -392,6 +394,7 @@ BEGIN
       S_data_d0_I5_1 <= S_data_d0_I5_0;
       S_data_d0_I6_1 <= S_data_d0_I6_0;
       S_data_d0_I7_1 <= S_data_d0_I7_0;
+      
       S_data_d0_Q0_1 <= S_data_d0_Q0_0;
       S_data_d0_Q1_1 <= S_data_d0_Q1_0;
       S_data_d0_Q2_1 <= S_data_d0_Q2_0;
@@ -505,7 +508,7 @@ BEGIN
     ELSIF rising_edge(I_clk) THEN
       -------------------第一级流水 扩符号位相加-------------------------
       S_data_pipel0_I1_0 <= S_data_d0_I1_0(12) & S_data_d0_I1_0;
-      S_data_pipel0_I1_1 <= (S_data_d0_I2_1(12) & S_data_d0_I2_1) + (I_data_d0_I6(12) & I_data_d0_I6);
+      S_data_pipel0_I1_1 <= (S_data_d0_I2_1(12) & S_data_d0_I2_1) + (I_data_d0_I0(12) & I_data_d0_I0);
       S_data_pipel0_I1_2 <= (S_data_d0_I4_1(12) & S_data_d0_I4_1) + (S_data_d0_I6_0(12) & S_data_d0_I6_0);
       S_data_pipel0_I1_3 <= (S_data_d0_I6_1(12) & S_data_d0_I6_1) + (S_data_d0_I4_0(12) & S_data_d0_I4_0);
       S_data_pipel0_I1_4 <= (S_data_d0_I0_0(12) & S_data_d0_I0_0) + (S_data_d0_I2_0(12) & S_data_d0_I2_0);
@@ -844,7 +847,7 @@ BEGIN
      ELSIF rising_edge(I_clk) THEN
        -------------------第一级流水 扩符号位相加-------------------------
        S_data_pipel0_Q1_0 <= S_data_d0_Q1_0(12) & S_data_d0_Q1_0;
-       S_data_pipel0_Q1_1 <= (S_data_d0_Q2_1(12) & S_data_d0_Q2_1) + (I_data_d0_Q6(12) & I_data_d0_Q6);
+       S_data_pipel0_Q1_1 <= (S_data_d0_Q2_1(12) & S_data_d0_Q2_1) + (I_data_d0_Q0(12) & I_data_d0_Q0);
        S_data_pipel0_Q1_2 <= (S_data_d0_Q4_1(12) & S_data_d0_Q4_1) + (S_data_d0_Q6_0(12) & S_data_d0_Q6_0);
        S_data_pipel0_Q1_3 <= (S_data_d0_Q6_1(12) & S_data_d0_Q6_1) + (S_data_d0_Q4_0(12) & S_data_d0_Q4_0);
        S_data_pipel0_Q1_4 <= (S_data_d0_Q0_0(12) & S_data_d0_Q0_0) + (S_data_d0_Q2_0(12) & S_data_d0_Q2_0);

@@ -200,7 +200,7 @@ BEGIN
     '0' AFTER 400300 ns;
   S_clk <= NOT S_clk AFTER 5.333 ns;
 
-  DDC_ctr_u : DDC_ctr
+  ddc_ctr_u : ddc_ctr
   PORT MAP(
     I_clk          => S_clk,
     I_rst_n        => S_rst_n,
@@ -324,23 +324,23 @@ BEGIN
       CASE c_status IS
         WHEN s_idle =>
           c_status <= s_write;
-          file_open(file_status, file0, "S_data_d1_Q0.txt", write_mode);
-          file_open(file_status, file1, "S_data_d1_Q1.txt", write_mode);
-          file_open(file_status, file2, "S_data_d1_Q2.txt", write_mode);
-          file_open(file_status, file3, "S_data_d1_Q3.txt", write_mode);
+          file_open(file_status, file0, "S_data_d1_I0.txt", write_mode);
+          file_open(file_status, file1, "S_data_d1_I1.txt", write_mode);
+          file_open(file_status, file2, "S_data_d1_I2.txt", write_mode);
+          file_open(file_status, file3, "S_data_d1_I3.txt", write_mode);
         WHEN s_write =>
           IF rst_cnt >= rst_cnt_stop THEN
             c_status <= s_end;
           ELSE
             c_status <= s_write;
           END IF;
-          write(buf, conv_integer(S_data_d1_Q0));
+          write(buf, conv_integer(S_data_d1_I0));
           writeline(file0, buf);
-          write(buf, conv_integer(S_data_d1_Q1));
+          write(buf, conv_integer(S_data_d1_I1));
           writeline(file1, buf);
-          write(buf, conv_integer(S_data_d1_Q2));
+          write(buf, conv_integer(S_data_d1_I2));
           writeline(file2, buf);
-          write(buf, conv_integer(S_data_d1_Q3));
+          write(buf, conv_integer(S_data_d1_I3));
           writeline(file3, buf);
         WHEN s_end =>
           c_status <= s_end;

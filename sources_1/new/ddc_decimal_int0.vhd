@@ -937,7 +937,7 @@ BEGIN
       S_data_pipel0_I3_0 <= S_data_mod_I13(7) & S_data_mod_I13;
       S_data_pipel0_I3_1 <= (S_data_mod_I6(7) & S_data_mod_I6) + (I_data_mod_I4(7) & I_data_mod_I4);
       S_data_pipel0_I3_2 <= (S_data_mod_I8(7) & S_data_mod_I8) + (I_data_mod_I2(7) & I_data_mod_I2);
-      S_data_pipel0_I3_3 <= (S_data_mod_I10(7) & S_data_mod_I10) + (S_data_mod_I0(7) & S_data_mod_I0);
+      S_data_pipel0_I3_3 <= (S_data_mod_I10(7) & S_data_mod_I10) + (I_data_mod_I0(7) & I_data_mod_I0);
       S_data_pipel0_I3_4 <= (S_data_mod_I12(7) & S_data_mod_I12) + (S_data_mod_I14(7) & S_data_mod_I14);
       -------------------第三级流水 24位扩位相加-------------------------
       S_data_pipel2_I3_0 <= (S_data_pipel1_I3_0(23) & S_data_pipel1_I3_0(23 DOWNTO 0)) + (S_data_pipel1_I3_1(23) & S_data_pipel1_I3_1(23 DOWNTO 0));
@@ -1187,7 +1187,7 @@ BEGIN
       S_data_pipel0_I6_0 <= I_data_mod_I3(7) & I_data_mod_I3;
       S_data_pipel0_I6_1 <= (S_data_mod_I12(7) & S_data_mod_I12) + (I_data_mod_I10(7) & I_data_mod_I10);
       S_data_pipel0_I6_2 <= (S_data_mod_I14(7) & S_data_mod_I14) + (I_data_mod_I8(7) & I_data_mod_I8);
-      S_data_pipel0_I6_3 <= (I_data_mod_I10(7) & I_data_mod_I0) + (I_data_mod_I6(7) & I_data_mod_I6);
+      S_data_pipel0_I6_3 <= (I_data_mod_I0(7) & I_data_mod_I0) + (I_data_mod_I6(7) & I_data_mod_I6);
       S_data_pipel0_I6_4 <= (I_data_mod_I2(7) & I_data_mod_I2) + (I_data_mod_I4(7) & I_data_mod_I4);
       -------------------第三级流水 24位扩位相加-------------------------
       S_data_pipel2_I6_0 <= (S_data_pipel1_I6_0(23) & S_data_pipel1_I6_0(23 DOWNTO 0)) + (S_data_pipel1_I6_1(23) & S_data_pipel1_I6_1(23 DOWNTO 0));
@@ -1611,7 +1611,7 @@ BEGIN
       S_data_pipel0_Q3_0 <= S_data_mod_Q13(7) & S_data_mod_Q13;
       S_data_pipel0_Q3_1 <= (S_data_mod_Q6(7) & S_data_mod_Q6) + (I_data_mod_Q4(7) & I_data_mod_Q4);
       S_data_pipel0_Q3_2 <= (S_data_mod_Q8(7) & S_data_mod_Q8) + (I_data_mod_Q2(7) & I_data_mod_Q2);
-      S_data_pipel0_Q3_3 <= (S_data_mod_Q10(7) & S_data_mod_Q10) + (S_data_mod_Q0(7) & S_data_mod_Q0);
+      S_data_pipel0_Q3_3 <= (S_data_mod_Q10(7) & S_data_mod_Q10) + (I_data_mod_Q0(7) & I_data_mod_Q0);
       S_data_pipel0_Q3_4 <= (S_data_mod_Q12(7) & S_data_mod_Q12) + (S_data_mod_Q14(7) & S_data_mod_Q14);
       -------------------第三级流水 24位扩位相加-------------------------
       S_data_pipel2_Q3_0 <= (S_data_pipel1_Q3_0(23) & S_data_pipel1_Q3_0(23 DOWNTO 0)) + (S_data_pipel1_Q3_1(23) & S_data_pipel1_Q3_1(23 DOWNTO 0));
@@ -1861,7 +1861,7 @@ BEGIN
       S_data_pipel0_Q6_0 <= I_data_mod_Q3(7) & I_data_mod_Q3;
       S_data_pipel0_Q6_1 <= (S_data_mod_Q12(7) & S_data_mod_Q12) + (I_data_mod_Q10(7) & I_data_mod_Q10);
       S_data_pipel0_Q6_2 <= (S_data_mod_Q14(7) & S_data_mod_Q14) + (I_data_mod_Q8(7) & I_data_mod_Q8);
-      S_data_pipel0_Q6_3 <= (I_data_mod_Q10(7) & I_data_mod_Q0) + (I_data_mod_Q6(7) & I_data_mod_Q6);
+      S_data_pipel0_Q6_3 <= (I_data_mod_Q0(7) & I_data_mod_Q0) + (I_data_mod_Q6(7) & I_data_mod_Q6);
       S_data_pipel0_Q6_4 <= (I_data_mod_Q2(7) & I_data_mod_Q2) + (I_data_mod_Q4(7) & I_data_mod_Q4);
       -------------------第三级流水 24位扩位相加-------------------------
       S_data_pipel2_Q6_0 <= (S_data_pipel1_Q6_0(23) & S_data_pipel1_Q6_0(23 DOWNTO 0)) + (S_data_pipel1_Q6_1(23) & S_data_pipel1_Q6_1(23 DOWNTO 0));
